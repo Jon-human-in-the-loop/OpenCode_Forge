@@ -466,6 +466,27 @@ export default function Home() {
                               {item.description}
                             </p>
                             <div className="flex gap-1.5 mt-3 flex-wrap">
+                              {/* Install type badge */}
+                              {"installType" in item && (item as any).installType === "git" && (
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400/90 border border-yellow-500/20">
+                                  git clone
+                                </span>
+                              )}
+                              {"installType" in item && (item as any).installType === "instructions" && (
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400/90 border border-purple-500/20">
+                                  instructions
+                                </span>
+                              )}
+                              {"installType" in item && (item as any).installType === "uvx" && (
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-400/90 border border-green-500/20">
+                                  uvx (python)
+                                </span>
+                              )}
+                              {"npm" in item && (item as any).npm && (!("installType" in item) || (item as any).installType === "npm") && (
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-red-500/10 text-red-400/90 border border-red-500/20">
+                                  npm
+                                </span>
+                              )}
                               {item.tags.map((tag) => (
                                 <span
                                   key={tag}
@@ -700,7 +721,7 @@ export default function Home() {
               {
                 icon: Puzzle,
                 title: "Plugins",
-                items: ["Shell Strategy", "Context Pruning", "VibeGuard", "SuperMemory", "Morph Plugin"],
+                items: ["Shell Strategy", "Context Pruning (DCP)", "VibeGuard", "SuperMemory", "Morph Fast Apply"],
                 color: "text-cyan",
               },
               {

@@ -16,6 +16,8 @@ export interface InstallerItem {
   recommended: boolean;
   essential: boolean;
   npm?: string;
+  gitRepo?: string;
+  installType?: "npm" | "git" | "uvx" | "instructions";
   url?: string;
   tags: string[];
 }
@@ -106,7 +108,8 @@ export const plugins: InstallerItem[] = [
     category: "plugins",
     recommended: true,
     essential: true,
-    npm: "opencode-shell-strategy",
+    gitRepo: "https://github.com/JRedeker/opencode-shell-strategy.git",
+    installType: "instructions",
     tags: ["stability", "shell"],
   },
   {
@@ -116,7 +119,8 @@ export const plugins: InstallerItem[] = [
     category: "plugins",
     recommended: true,
     essential: true,
-    npm: "opencode-dynamic-context-pruning",
+    npm: "@tarquinen/opencode-dcp",
+    installType: "npm",
     tags: ["optimization", "tokens"],
   },
   {
@@ -136,7 +140,8 @@ export const plugins: InstallerItem[] = [
     category: "plugins",
     recommended: true,
     essential: false,
-    npm: "opencode-notificator",
+    npm: "opencode-notification",
+    installType: "npm",
     tags: ["productivity", "notifications"],
   },
   {
@@ -161,13 +166,14 @@ export const plugins: InstallerItem[] = [
   },
   {
     id: "opencode-morph-plugin",
-    name: "Morph Plugin",
-    description: "Fast Apply editing, WarpGrep codebase search, and context compaction via Morph.",
+    name: "Morph Fast Apply",
+    description: "10x faster code editing via Morph's Fast Apply API. Lazy edit markers at 10,500+ tokens/sec.",
     category: "plugins",
     recommended: true,
     essential: false,
-    npm: "opencode-morph-plugin",
-    tags: ["editing", "search"],
+    gitRepo: "https://github.com/JRedeker/opencode-morph-fast-apply.git",
+    installType: "git",
+    tags: ["editing", "fast-apply"],
   },
   {
     id: "opencode-websearch-cited",
@@ -200,14 +206,15 @@ export const plugins: InstallerItem[] = [
     tags: ["terminal", "interactive"],
   },
   {
-    id: "opencode-md-table-formatter",
-    name: "MD Table Formatter",
-    description: "Automatically clean up markdown tables produced by LLMs for better readability.",
+    id: "opencode-sandbox",
+    name: "Sandbox",
+    description: "Sandboxes agent commands using seatbelt (macOS) or bubblewrap (Linux) for safe execution.",
     category: "plugins",
     recommended: false,
     essential: false,
-    npm: "opencode-md-table-formatter",
-    tags: ["formatting", "markdown"],
+    npm: "opencode-sandbox",
+    installType: "npm",
+    tags: ["security", "sandbox"],
   },
   {
     id: "opencode-openai-codex-auth",
@@ -280,7 +287,8 @@ export const mcpServers: InstallerItem[] = [
     category: "mcp",
     recommended: true,
     essential: false,
-    npm: "@modelcontextprotocol/server-fetch",
+    npm: "mcp-server-fetch",
+    installType: "uvx",
     tags: ["web", "fetch"],
   },
   {
